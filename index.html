@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+        <div>이름: <input type="text" id="name"/></div>
+        <div>지역: <select id="city" onchange="changeCity();">
+            <!-- <option value="02" selected>서울</option>
+            <option value="042">대전</option> -->
+
+        </select></div>
+        <div>동네:
+            <select id="region_02">
+                <option value="">강남</option>
+                <option value="">강북</option>
+            </select>
+            <select id="region_042" style="display:none">
+                <option value="">동구</option>
+                <option value="">중구</option>
+                <option value="">서구</option>
+                <option value="">대덕구</option>
+                <option value="">유성구</option>
+            </select>
+            <select id="region_062" style="display:none">
+                <option value="">동구</option>
+                <option value="">남구</option>
+                <option value="">서구</option>
+                <option value="">북구</option>
+                <option value="">광산구</option>
+            </select>
+        </div>
+        <div>
+            테스트: <input type="text" id="test" value="" />
+        </div>
+
+        <button type="button" id="btn" onclick="regist();">등록</button>
+    </div>
+
+    <script type="text/javascript" src="01_var.js"></script>
+    <script type="text/javascript" src="02_datatype.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+    <script>
+        function regist(){
+            //자바스크립트 이용
+            // alert(document.getElementById("name").value);//경고창 보여주는 거
+            // alert(document.getElementById("city").value);
+            //제이쿼리 이용
+            alert($("#name").val());//위의 것과 결과 동일
+            alert($("#city").val());
+        }
+
+        function changeCity(){
+            // let city = document.getElementById("city").value;//02나 042 값 가져옴
+            // document.getElementById("region_02").style.display = "none";
+            // document.getElementById("region_042").style.display = "none";
+            // document.getElementById("region_" + city).style.display = "";
+
+            let city2 = $('#city').val();
+            $('#region_02').hide();
+            $('#region_042').hide();
+            $('#region_'+ city2).show();
+
+            obj.name = $("#name").val();
+            obj.city = $('#city').val();
+            printConsole(obj);
+        }
+
+        function printConsole(data){
+            console.log(data);
+        }
+
+        function loadCity(){
+            //반복문, 조건문 
+            for(let i=0; i<city.length; i++){
+                if(i==0) $('#city').append('<option value="' + city[i].code + '"selected>' + city[i].name +'</option>');
+                else $('#city').append('<option value="' + city[i].code + '">' + city[i].name + '</option>');
+            }
+        }
+
+        loadCity();
+    </script>
+  </body>
+</html>
